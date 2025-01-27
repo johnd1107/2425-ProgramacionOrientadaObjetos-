@@ -1,4 +1,4 @@
-# Ejemplo simplificado de uso de Constructores (__init__) y Destructores (__del__) en Python
+# Ejemplo de uso de Constructores (__init__) y Destructores (__del__)
 
 class Archivo:
     def __init__(self, nombre_archivo, modo):
