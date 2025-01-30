@@ -21,7 +21,7 @@ def ejecutar_codigo(ruta_script):
         if os.name == 'nt':  # Windows
             subprocess.Popen(['cmd', '/c', 'python', ruta_script], creationflags=subprocess.CREATE_NEW_PROCESS_GROUP)
         else:  # Unix-based systems
-            subprocess.Popen(['gnome-terminal', '--', 'python3', ruta_script])  # Abre en una nueva terminal en Linux
+            subprocess.Popen(['gnome-terminal', '--', 'python3', ruta_script])
     except Exception as e:
         print(f"Ocurrió un error al ejecutar el código: {e}")
 
