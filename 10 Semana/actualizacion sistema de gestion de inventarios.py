@@ -28,7 +28,7 @@ class Producto:
     def __str__(self):
         return f"ID: {self.id} | Nombre: {self.nombre} | Cantidad: {self.cantidad} | Precio: ${self.precio}"
 
-    # Método para guardar el producto en formato de texto
+    # Metodo para guardar el producto en formato de texto
     def to_file_string(self):
         return f"{self.id},{self.nombre},{self.cantidad},{self.precio}\n"
 
@@ -86,7 +86,7 @@ class Inventario:
                 return
         print("Producto no encontrado.")
 
-    # Actualizar cantidad o precio
+    # Actualizar cantidad o el precio
     def actualizar_producto(self, id, cantidad=None, precio=None):
         for p in self.productos:
             if p.get_id() == id:
