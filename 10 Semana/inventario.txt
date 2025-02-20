@@ -1,0 +1,4 @@
+2,lapiz,15,4.0
+3,borrador,16,3.0
+4,esfero,46,0.45
+1,cuaderno,46,0.6

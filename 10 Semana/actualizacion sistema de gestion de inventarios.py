@@ -112,7 +112,7 @@ class Inventario:
     # Mostrar todos los productos
     def mostrar_inventario(self):
         if self.productos:
-            print("Inventario de productos:")
+            print("Inventario de producto:")
             for p in self.productos:
                 print(p)
         else:
