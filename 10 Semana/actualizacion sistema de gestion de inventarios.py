@@ -1,4 +1,4 @@
-# Sistema de gestion de inventarios
+# Sistema de gestión de inventarios con almacenamiento y recuperación desde archivo
 class Producto:
     def __init__(self, id, nombre, cantidad, precio):
         self.id = id
@@ -28,19 +28,52 @@ class Producto:
     def __str__(self):
         return f"ID: {self.id} | Nombre: {self.nombre} | Cantidad: {self.cantidad} | Precio: ${self.precio}"
 
+    # Método para guardar el producto en formato de texto
+    def to_file_string(self):
+        return f"{self.id},{self.nombre},{self.cantidad},{self.precio}\n"
+
 
 class Inventario:
-    def __init__(self):
+    def __init__(self, archivo="inventario.txt"):
         self.productos = []
+        self.archivo = archivo
+        self.cargar_inventario()
+
+    # Cargar productos desde el archivo
+    def cargar_inventario(self):
+        try:
+            with open(self.archivo, "r") as file:
+                for line in file:
+                    id, nombre, cantidad, precio = line.strip().split(',')
+                    producto = Producto(int(id), nombre, int(cantidad), float(precio))
+                    self.productos.append(producto)
+        except FileNotFoundError:
+            print(f"Archivo {self.archivo} no encontrado. Se creará uno nuevo.")
+        except PermissionError:
+            print("Error de permisos para acceder al archivo.")
+        except Exception as e:
+            print(f"Ocurrió un error al cargar el inventario: {e}")
+
+    # Guardar productos en el archivo
+    def guardar_inventario(self):
+        try:
+            with open(self.archivo, "w") as file:
+                for p in self.productos:
+                    file.write(p.to_file_string())
+            print("Inventario guardado correctamente.")
+        except PermissionError:
+            print("Error de permisos para escribir en el archivo.")
+        except Exception as e:
+            print(f"Ocurrió un error al guardar el inventario: {e}")
 
     # Añadir un nuevo producto
     def añadir_producto(self, producto):
-        # Comprobar si el ID ya existe
         for p in self.productos:
             if p.get_id() == producto.get_id():
                 print("Error de ID: el producto ya existe.")
                 return
         self.productos.append(producto)
+        self.guardar_inventario()
         print(f"Producto {producto.get_nombre()} añadido al inventario.")
 
     # Eliminar producto por ID
@@ -48,6 +81,7 @@ class Inventario:
         for p in self.productos:
             if p.get_id() == id:
                 self.productos.remove(p)
+                self.guardar_inventario()
                 print(f"Producto con ID {id} eliminado.")
                 return
         print("Producto no encontrado.")
@@ -60,6 +94,7 @@ class Inventario:
                     p.set_cantidad(cantidad)
                 if precio is not None:
                     p.set_precio(precio)
+                self.guardar_inventario()
                 print(f"Producto con ID {id} actualizado.")
                 return
         print("Producto no encontrado.")
