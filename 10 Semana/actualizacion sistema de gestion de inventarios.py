@@ -1,4 +1,4 @@
-# Sistema de gestión de inventarios con almacenamiento y recuperación desde archivo
+# Sistema de gestión de inventarios actualizado
 class Producto:
     def __init__(self, id, nombre, cantidad, precio):
         self.id = id
