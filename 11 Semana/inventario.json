@@ -1,0 +1,20 @@
+{
+    "1": {
+        "id": 1,
+        "nombre": "lapiz",
+        "cantidad": 56,
+        "precio": 2.0
+    },
+    "2": {
+        "id": 2,
+        "nombre": "borrador",
+        "cantidad": 49,
+        "precio": 1.0
+    },
+    "3": {
+        "id": 3,
+        "nombre": "esfero",
+        "cantidad": 26,
+        "precio": 3.0
+    }
+}
