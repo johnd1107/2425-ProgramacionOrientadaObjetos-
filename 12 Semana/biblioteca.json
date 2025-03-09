@@ -1,0 +1,11 @@
+{
+    "1": {
+        "isbn": "1",
+        "titulo": "Los 3 cerditos",
+        "autor": [
+            "john",
+            "defaz"
+        ],
+        "categoria": "infantil"
+    }
+}
